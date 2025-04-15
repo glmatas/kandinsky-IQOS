@@ -1,70 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
-  
-  <title>Kandinsky</title>
-  
-  <!-- CSS: Original stylesheet preserving all styles (plus your added intro window styles via CSS file) -->
-  <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-  
-  <!-- Original JavaScript libraries and modules -->
-  <script type="text/javascript" src="assets/js/kandinsky.js"></script>
-  <script type="text/javascript" src="assets/js/howler.js"></script>
-  <script type="text/javascript" src="assets/js/main.js"></script>
-  <script type="text/javascript" src="assets/js/vconsole.min.js"></script>
-  <script type="text/javascript" src="assets/js/video-export/FileSaver.min.js"></script>
-  <script type="text/javascript" src="assets/js/video-export/polyfills.js"></script>
-  <script type="text/javascript" src="assets/js/video-export/videoExporter.js"></script>
-  <script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+	
+	<title>Kandinsky</title>
+	
+	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="assets/js/kandinsky.js"></script>
+	<script type="text/javascript" src="assets/js/howler.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/vconsole.min.js"></script>
+	<script type="text/javascript" src="assets/js/video-export/FileSaver.min.js"></script>
+	<script type="text/javascript" src="assets/js/video-export/polyfills.js"></script>
+	<script type="text/javascript" src="assets/js/video-export/videoExporter.js"></script>
+	<script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
 </head>
 <body>
-  <!-- Intro Window Overlay: New addition to welcome users -->
-  <div id="introWindow" class="intro-window">
-    <div class="intro-content">
-      <h1>Welcome to Kandinsky</h1>
-      <p>A generative audio-visual experience</p>
-      <button id="startButton">Enter</button>
-    </div>
-  </div>
-  
-  <!-- Main Content: The Stage where Kandinsky renders its visuals -->
-  <div id="Stage">
-    <!-- Canvas element for drawing animations; kandinsky.js and main.js will target this -->
-    <canvas id="kandinskyCanvas"></canvas>
-  </div>
-  
-  <!-- Video Export GUI: Preserved from original script -->
-  <div id="videoExportGUI"></div>
-  
-  <!-- Inline Script: Handles the intro overlay fade-out on clicking "Enter" and kicks off the animation -->
-  <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-      var startButton = document.getElementById("startButton");
-      startButton.addEventListener("click", function () {
-        // Fade out the intro overlay by adding the 'hidden' class.
-        document.getElementById("introWindow").classList.add("hidden");
-        console.log("Intro overlay hidden.");
-
-        // Delay execution to allow the fade-out transition to complete.
-        setTimeout(function(){
-          // Call the initialization routine for Kandinsky.
-          // Replace "startKandinsky" or "initKandinsky" with your actual initialization function name.
-          if (typeof startKandinsky === 'function') {
-            startKandinsky();
-            console.log("Kandinsky started via startKandinsky().");
-          } else if (typeof initKandinsky === 'function') {
-            initKandinsky();
-            console.log("Kandinsky started via initKandinsky().");
-          } else {
-            console.log("No initialization function found; assuming auto-initialization in main.js.");
-          }
-        }, 600); // Adjust delay to match your CSS transition time (600 ms used here as an example)
-      });
-    });
-  </script>
+<div id="videoExportGUI"></div>
 </body>
 </html>
