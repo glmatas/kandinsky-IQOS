@@ -8,33 +8,9 @@
   <title>Kandinsky</title>
   
   <!-- Link to external CSS -->
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-
-  <!-- Intro Screen Overlay -->
-  <div id="introScreen">
-    <div id="introContent">
-      <h1>Welcome to Kandinsky</h1>
-      <p>Prepare to start your creative journey.</p>
-      <button id="startGameBtn">Start Game</button>
-    </div>
-  </div>
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css">
   
-  <!-- Game Container -->
-  <div id="gameContainer">
-    <!-- Game canvas (or other elements) -->
-    <canvas id="Stage"></canvas>
-    
-    <!-- Return Home button to go back to the intro -->
-    <button id="backToIntroBtn">Return Home</button>
-    
-    <!-- Additional element (e.g. video export GUI) -->
-    <div id="videoExportGUI"></div>
-  </div>
-  
-  <!-- External JavaScript -->
-  <script src="assets/js/script.js"></script>
+  <!-- External JavaScript files for the game -->
   <script type="text/javascript" src="assets/js/kandinsky.js"></script>
   <script type="text/javascript" src="assets/js/howler.js"></script>
   <script type="text/javascript" src="assets/js/main.js"></script>
@@ -43,6 +19,27 @@
   <script type="text/javascript" src="assets/js/video-export/polyfills.js"></script>
   <script type="text/javascript" src="assets/js/video-export/videoExporter.js"></script>
   <script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
+</head>
+<body>
+  <!-- The game canvas -->
+  <canvas id="Stage"></canvas>
   
+  <!-- Intro Screen Overlay (sits on top of the canvas) -->
+  <div id="introScreen">
+    <div id="introContent">
+      <h1>Welcome to Kandinsky</h1>
+      <p>Prepare to start your creative journey.</p>
+      <button id="startGameBtn">Start Game</button>
+    </div>
+  </div>
+  
+  <!-- Return Home button (initially hidden) -->
+  <button id="backToIntroBtn">Return Home</button>
+  
+  <!-- Video export GUI element (from your original markup) -->
+  <div id="videoExportGUI"></div>
+  
+  <!-- Link to our custom script -->
+  <script src="assets/js/script.js"></script>
 </body>
 </html>

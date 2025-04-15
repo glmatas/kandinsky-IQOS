@@ -9,7 +9,7 @@ body, html {
     overflow: hidden;
   }
   
-  /* Make the game canvas and its children non-selectable */
+  /* Make the Stage and its children non-selectable */
   #Stage,
   #Stage * {
     position: absolute;
@@ -58,7 +58,7 @@ body, html {
      Video Export GUI & Related Styles
   =========================== */
   #videoExportGUI {
-    background-color: gray;
+    background-color: gray;    
     padding: 20px;
     border-radius: 3px;
     left: 50%;
@@ -78,29 +78,109 @@ body, html {
     height: 15px;
   }
   
-  /* (Other related styles for progress bars, dropdowns, etc. remain unchanged.) */
+  #videoExportProgressBarContainer {
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  
+  #videoExportSettingsContainer { }
+  
+  .quality-container {
+    color: #FFF;
+    display: flex;
+    flex-direction: row;
+    float: left;
+  }
+  
+  #qualitySettingTitle {
+    padding-top: 5px;
+    margin-right: 5px;
+  }
+  
+  .dropbtn {
+    width: 60px;
+    height: 16px;
+    padding: 6px;
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+  }
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 120px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-item {
+    color: black;
+    padding: 6px 8px;
+    text-decoration: none;
+    display: block;
+    z-index: 12;
+  }
+  .dropdown-item:hover {
+    background-color: #FFF;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .videoDownloadButton {
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    background-color: #333;
+    text-align: center;
+    padding: 6px;
+    height: 20px;
+    width: 160px;
+    float: right;
+    transition: background-color 100ms linear;
+  }
+  .videoDownloadButton:hover {
+    background-color: #00D9A7;
+  }
+  .videoDownloadButton:active {
+    background-color: #01C094;
+  }
   
   /* =======================
-     Layout for Intro & Game Screens
+     Intro Overlay & Return Home Button
   =========================== */
-  #introScreen,
-  #gameContainer {
+  #introScreen {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    transition: opacity 0.5s ease;
-  }
-  
-  #introScreen {
     background: linear-gradient(135deg, #667eea, #764ba2);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     opacity: 1;
-    z-index: 2; /* Appears above gameContainer */
+    z-index: 2; /* Sits on top of the canvas */
     pointer-events: auto;
   }
   
@@ -126,28 +206,19 @@ body, html {
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
   #startGameBtn:hover {
     background-color: #2980B9;
   }
   
-  /* The game container (by itself) has no background */
-  /* Its child canvas has a background - remove or change it if desired */
-  #gameContainer {
-    z-index: 1;
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  /* Canvas for the game; adjust background as needed.
-     For a transparent background, change or remove background-color. */
+  /* The canvas element for your game.
+     Change or remove the background color as needed. */
   #Stage {
     width: 100%;
     height: 100%;
-    background-color: transparent; /* or change to your desired color */
+    background-color: transparent; /* Transparent to avoid a blocking gray background */
   }
   
-  /* Return Home button styling within game container */
+  /* Return Home button styling; initially hidden */
   #backToIntroBtn {
     position: absolute;
     top: 20px;
@@ -160,8 +231,8 @@ body, html {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: none;
   }
-  
   #backToIntroBtn:hover {
     background-color: #2980B9;
   }
