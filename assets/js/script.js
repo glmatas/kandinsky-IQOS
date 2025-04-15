@@ -10,7 +10,7 @@ function startGame() {
   
   // Enable the game view by setting it visible and interactive.
   gameContainer.style.pointerEvents = "auto";
-  gameContainer.style.opacity = "0";
+  gameContainer.style.opacity = "1";
   
   // After transition, remove the intro overlay from display and start the inactivity timer.
   setTimeout(function() {
