@@ -21,7 +21,7 @@
     }
     
     /* Ensure both containers cover the full screen */
-    #introScreen, #gameContainer {
+    #introScreen {
       position: absolute;
       top: 0;
       left: 0;
@@ -67,14 +67,6 @@
 
     #startGameBtn:hover {
       background-color: #2980B9;
-    }
-    
-    /* Game container starts visible (but fully transparent) */
-    #gameContainer {
-      display: block;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      z-index: 1; /* Behind the intro until fade completes */
     }
     
     /* Example placeholder for game content – ensure you have your canvas or game markup here */
