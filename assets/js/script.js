@@ -5,14 +5,15 @@ function startGame() {
   var introScreen = document.getElementById("introScreen");
   var gameContainer = document.getElementById("gameContainer");
 
-  // Fade out the intro overlay.
+  // Fade out the intro overlay and immediately disable its pointer events
   introScreen.style.opacity = "0";
+  introScreen.style.pointerEvents = "none"; // Prevent introScreen from blocking interactions
   
   // Make the game container visible and interactive.
   gameContainer.style.pointerEvents = "auto";
   gameContainer.style.opacity = "1";
   
-  // After the transition, remove the intro overlay and start the inactivity timer.
+  // After the transition, remove the intro overlay from layout and start the inactivity timer.
   setTimeout(function() {
     introScreen.style.display = "none";
     startInactivityTimer();
@@ -27,8 +28,10 @@ function goToIntro() {
   // Clear any running inactivity timer.
   clearTimeout(inactivityTimer);
   
-  // Show the intro overlay.
+  // Restore the intro overlay.
   introScreen.style.display = "flex";
+  // Enable interactions on the intro overlay.
+  introScreen.style.pointerEvents = "auto";
   setTimeout(function() {
     introScreen.style.opacity = "1";
   }, 50);
@@ -47,7 +50,7 @@ function startInactivityTimer() {
 // Reset the inactivity timer on user activity.
 function resetInactivityTimer() {
   var introScreen = document.getElementById("introScreen");
-  // Only reset if the game container is active (introScreen hidden).
+  // Only reset if the game container is active (i.e., introScreen is hidden).
   if (introScreen.style.display === "none") {
     startInactivityTimer();
   }
