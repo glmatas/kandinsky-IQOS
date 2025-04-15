@@ -1,24 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="description" content="" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
-	
-	<title>Kandinsky</title>
-	
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="assets/js/kandinsky.js"></script>
-	<script type="text/javascript" src="assets/js/howler.js"></script>
-	<script type="text/javascript" src="assets/js/main.js"></script>
-	<script type="text/javascript" src="assets/js/vconsole.min.js"></script>
-	<script type="text/javascript" src="assets/js/video-export/FileSaver.min.js"></script>
-	<script type="text/javascript" src="assets/js/video-export/polyfills.js"></script>
-	<script type="text/javascript" src="assets/js/video-export/videoExporter.js"></script>
-	<script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
-</head>
-<body>
-<div id="videoExportGUI"></div>
-</body>
-</html>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="Kandinsky Game Intro Screen" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+  <title>Kandinsky</title>
+  
+  <!-- Link to external CSS files if any -->
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+  
+  <style>
+    /* Base resets */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    /* Intro overlay styles */
+    #introScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200; /* Ensures the intro is on top */
+      opacity: 1;
+      transition: opacity 0.5s ease-out;
+    }
+
+    #introContent {
+      text-align: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 90%;
+    }
+    
+    #introContent h1 {
+      margin-bottom: 20px;
+      font-size: 2.5em;
+    }
+
+    /* Modern start button styling */
+    #startGameBtn {
+      background-color: #3498DB;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 24px;
+      font-size: 18px;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #startGameBtn:hover {
+      background-color: #2980B9;
+    }
+
+    /* Container for the actual game elements */
+    #gameContainer {
+      display: none; /* Hidden until the intro is dismissed */
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    
+    /* Include other styles (e.g., for spinner, export GUI, etc.) if needed */
+    /* ... existing CSS from your project ... */
+    
+    /* Example for the video export GUI div */
+    #videoExportGUI {
+      background-color: gray;    
+      padding: 20px;
+      border-radius: 3px;
+      left: 50%;
+      top:
