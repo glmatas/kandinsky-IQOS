@@ -1,6 +1,6 @@
 var inactivityTimer; // Holds the inactivity timeout
 
-// Function to start/resume the game: hide the intro, show the game view.
+// Start/resume the game: hide intro, show game container.
 function startGame() {
   var introScreen = document.getElementById("introScreen");
   var gameContainer = document.getElementById("gameContainer");
@@ -8,18 +8,18 @@ function startGame() {
   // Fade out the intro overlay.
   introScreen.style.opacity = "0";
   
-  // Enable the game view by setting it visible and interactive.
+  // Make the game container visible and interactive.
   gameContainer.style.pointerEvents = "auto";
   gameContainer.style.opacity = "1";
   
-  // After transition, remove the intro overlay from display and start the inactivity timer.
+  // After the transition, remove the intro overlay and start the inactivity timer.
   setTimeout(function() {
     introScreen.style.display = "none";
     startInactivityTimer();
   }, 500);
 }
 
-// Function to return to the intro (i.e. "Return Home").
+// Return to the intro screen ("Return Home").
 function goToIntro() {
   var introScreen = document.getElementById("introScreen");
   var gameContainer = document.getElementById("gameContainer");
@@ -38,26 +38,24 @@ function goToIntro() {
   gameContainer.style.pointerEvents = "none";
 }
 
-// Function to start a 60‑second inactivity timer.
+// Start a 60-second inactivity timer.
 function startInactivityTimer() {
   clearTimeout(inactivityTimer);
   inactivityTimer = setTimeout(goToIntro, 60000); // 60,000 ms = 60 seconds.
 }
 
-// Function to reset the inactivity timer on user activity.
+// Reset the inactivity timer on user activity.
 function resetInactivityTimer() {
-  // Only reset if the game view is active (i.e. introScreen is hidden).
   var introScreen = document.getElementById("introScreen");
+  // Only reset if the game container is active (introScreen hidden).
   if (introScreen.style.display === "none") {
     startInactivityTimer();
   }
 }
 
-// Attach event listeners for the Start Game and Return Home buttons.
+// Attach event listeners.
 document.getElementById("startGameBtn").addEventListener("click", startGame);
 document.getElementById("backToIntroBtn").addEventListener("click", goToIntro);
-
-// Reset inactivity timer on user interactions.
 document.addEventListener("mousemove", resetInactivityTimer);
 document.addEventListener("keydown", resetInactivityTimer);
 document.addEventListener("touchstart", resetInactivityTimer);
