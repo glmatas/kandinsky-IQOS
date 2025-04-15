@@ -2,197 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Kandinsky Game Intro Screen" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
   <title>Kandinsky</title>
   
-  <!-- External CSS -->
-  <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-  
-  <style>
-    /* Base resets for full-screen usage */
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    
-    /* Both layers cover full screen */
-    #introScreen,
-    #gameContainer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transition: opacity 0.5s ease;
-    }
-    
-    /* Intro overlay styles */
-    #introScreen {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      opacity: 1;
-      z-index: 2; /* Over the game container */
-      pointer-events: auto;
-    }
-    
-    #introContent {
-      color: white;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 90%;
-    }
-    
-    #introContent h1 {
-      margin-bottom: 20px;
-      font-size: 2.5em;
-    }
-    
-    #startGameBtn {
-      background-color: #3498DB;
-      border: none;
-      border-radius: 5px;
-      padding: 12px 24px;
-      font-size: 18px;
-      color: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    
-    #startGameBtn:hover {
-      background-color: #2980B9;
-    }
-    
-    /* Game container is initially hidden */
-    #gameContainer {
-      z-index: 1;
-      opacity: 0;
-      pointer-events: none;
-    }
-    
-    /* Game canvas placeholder */
-    #Stage {
-      width: 100%;
-      height: 100%;
-      background-color: #222; /* Dark background for game area */
-    }
-    
-    /* Back-to-intro button styles within game container */
-    #backToIntroBtn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 10;
-      padding: 10px 20px;
-      background-color: #3498DB;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    
-    #backToIntroBtn:hover {
-      background-color: #2980B9;
-    }
-    
-    /* Existing styles (spinner, export GUI, etc.) */
-    #videoExportGUI {
-      background-color: gray;    
-      padding: 20px;
-      border-radius: 3px;
-      left: 50%;
-      top: 50%;
-      width: 500px;
-      height: 106px;
-      position: absolute;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
-                  0 6px 20px rgba(0, 0, 0, 0.19);
-      transform: translate(-50%, -50%);
-      display: none;
-      z-index: 100;
-    }
-    
-    /* Additional provided CSS remains unchanged (e.g., spinner styles) */
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    
-    #Stage,
-    #Stage * {
-      position: absolute;
-      user-select: none;
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      -o-user-select: none;
-      -ms-user-select: none;
-      -webkit-tap-highlight-color: rgba(0,0,0,0);
-      -webkit-text-size-adjust: none;
-    }
-    
-    .Spinner svg {
-      animation: rotation 1.4s linear infinite;
-      stroke: #fff;
-    }
-    
-    @keyframes rotation {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(270deg);
-      }
-    }
-    
-    .Spinner svg circle {
-      stroke-dasharray: 187;
-      stroke-dashoffset: 0;
-      transform-origin: 0, 0;
-      animation: turn 1.4s ease-in-out infinite;
-    }
-    
-    @-webkit-keyframes turn {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        transform: rotate(450deg);
-      }
-    }
-    
-    @keyframes turn {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        transform: rotate(450deg);
-      }
-    }
-    
-    /* (Other CSS, such as for dropdowns, quality containers, etc., would go here) */
-    
-  </style>
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
@@ -207,91 +23,26 @@
   
   <!-- Game Container -->
   <div id="gameContainer">
-    <!-- Game canvas or elements -->
+    <!-- Game canvas (or other elements) -->
     <canvas id="Stage"></canvas>
     
-    <!-- Back-to-intro button -->
-    <button id="backToIntroBtn">Back to Intro</button>
+    <!-- Return Home button to go back to the intro -->
+    <button id="backToIntroBtn">Return Home</button>
     
-    <!-- Additional element for video export (if needed) -->
+    <!-- Additional element (e.g. video export GUI) -->
     <div id="videoExportGUI"></div>
   </div>
   
-  <!-- External scripts -->
-  <script type="text/javascript" src="assets/js/kandinsky.js"></script>
-  <script type="text/javascript" src="assets/js/howler.js"></script>
-  <script type="text/javascript" src="assets/js/main.js"></script>
-  <script type="text/javascript" src="assets/js/vconsole.min.js"></script>
-  <script type="text/javascript" src="assets/js/video-export/FileSaver.min.js"></script>
-  <script type="text/javascript" src="assets/js/video-export/polyfills.js"></script>
-  <script type="text/javascript" src="assets/js/video-export/videoExporter.js"></script>
-  <script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
+  <!-- External JavaScript -->
+  <script src="assets/js/script.js"></script>
   
-  <script>
-    var inactivityTimer; // Holds the inactivity timeout
-
-    // Function to start/resume the game: hides the intro, shows the game view
-    function startGame() {
-      var introScreen = document.getElementById("introScreen");
-      var gameContainer = document.getElementById("gameContainer");
-
-      // Hide the intro overlay
-      introScreen.style.opacity = "0";
-      
-      // Enable game view by making it interactive and visible
-      gameContainer.style.pointerEvents = "auto";
-      gameContainer.style.opacity = "1";
-      
-      // Once the transition completes, hide the intro overlay from the layout
-      setTimeout(function() {
-        introScreen.style.display = "none";
-        startInactivityTimer();
-      }, 500);
-    }
-    
-    // Function to return to the intro, effectively pausing/hiding the game view
-    function goToIntro() {
-      var introScreen = document.getElementById("introScreen");
-      var gameContainer = document.getElementById("gameContainer");
-      
-      // Clear any running inactivity timer
-      clearTimeout(inactivityTimer);
-      
-      // Restore the intro overlay into view (flex display)
-      introScreen.style.display = "flex";
-      setTimeout(function() {
-        introScreen.style.opacity = "1";
-      }, 50);
-      
-      // Hide the game container by fading it out and disabling interactions
-      gameContainer.style.opacity = "0";
-      gameContainer.style.pointerEvents = "none";
-    }
-    
-    // Function to start a 60-second inactivity timer
-    function startInactivityTimer() {
-      clearTimeout(inactivityTimer);
-      inactivityTimer = setTimeout(goToIntro, 60000); // 60 seconds
-    }
-    
-    // Function to reset the inactivity timer if user activity is detected
-    function resetInactivityTimer() {
-      // Only reset if the game view is active (introScreen hidden)
-      var introScreen = document.getElementById("introScreen");
-      if (introScreen.style.display === "none") {
-        startInactivityTimer();
-      }
-    }
-    
-    // Attach event listeners to handle transitions and inactivity
-    document.getElementById("startGameBtn").addEventListener("click", startGame);
-    document.getElementById("backToIntroBtn").addEventListener("click", goToIntro);
-    
-    // Reset inactivity timer on any user activity
-    document.addEventListener("mousemove", resetInactivityTimer);
-    document.addEventListener("keydown", resetInactivityTimer);
-    document.addEventListener("touchstart", resetInactivityTimer);
-  </script>
+  <!--
+    Other external scripts can also be included as needed, for example:
+    <script src="assets/js/kandinsky.js"></script>
+    <script src="assets/js/howler.js"></script>
+    <script src="assets/js/main.js"></script>
+    etc.
+  -->
   
 </body>
 </html>

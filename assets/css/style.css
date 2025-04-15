@@ -1,79 +1,64 @@
+/* =======================
+   Base Resets & Common Styles
+=========================== */
 body, html {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-}
-
-#Stage,
-#Stage *{
-	position: absolute;
-	user-select: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-o-user-select: none;
-	-ms-user-select: none;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	-webkit-text-size-adjust: none;
-}
-
-.Spinner svg {
-	animation: rotation 1.4s linear infinite;
-	stroke: #fff;
-}
-
-@keyframes rotation {
-	0% {
-		transform: rotate(0deg);
-	}
-
-	100% {
-		transform: rotate(270deg);
-	}
-}
-
-.Spinner svg circle {
-	stroke-dasharray: 187;
-	stroke-dashoffset: 0;
-	transform-origin: 0, 0;
-	animation: turn 1.4s ease-in-out infinite;
-}
-
-@-webkit-keyframes turn {
-	0% {
-		stroke-dashoffset: 187;
-	}
-
-	50% {
-		stroke-dashoffset: 46.75;
-		transform: rotate(135deg);
-	}
-
-	100% {
-		stroke-dashoffset: 187;
-		transform: rotate(450deg);
-	}
-}
-
-@keyframes turn {
-	0% {
-		stroke-dashoffset: 187;
-	}
-
-	50% {
-		stroke-dashoffset: 46.75;
-		transform: rotate(135deg);
-	}
-
-	100% {
-		stroke-dashoffset: 187;
-		transform: rotate(450deg);
-	}
-}
-
-#videoExportGUI {
-    background-color: gray;    
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  /* Ensure the Stage and its children are non-selectable */
+  #Stage,
+  #Stage * {
+    position: absolute;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-text-size-adjust: none;
+  }
+  
+  /* =======================
+     Spinner Styles
+  =========================== */
+  .Spinner svg {
+    animation: rotation 1.4s linear infinite;
+    stroke: #fff;
+  }
+  
+  @keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+  }
+  
+  .Spinner svg circle {
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    transform-origin: 0, 0;
+    animation: turn 1.4s ease-in-out infinite;
+  }
+  
+  @-webkit-keyframes turn {
+    0% { stroke-dashoffset: 187; }
+    50% { stroke-dashoffset: 46.75; transform: rotate(135deg); }
+    100% { stroke-dashoffset: 187; transform: rotate(450deg); }
+  }
+  
+  @keyframes turn {
+    0% { stroke-dashoffset: 187; }
+    50% { stroke-dashoffset: 46.75; transform: rotate(135deg); }
+    100% { stroke-dashoffset: 187; transform: rotate(450deg); }
+  }
+  
+  /* =======================
+     Video Export GUI & Related Styles
+  =========================== */
+  #videoExportGUI {
+    background-color: gray;
     padding: 20px;
     border-radius: 3px;
     left: 50%;
@@ -81,67 +66,61 @@ body, html {
     width: 500px;
     height: 106px;
     position: absolute;
-    z-index: 10;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transform: translateX(-50%) translateY(-50%);
-	display: none;
-	z-index:100;
-}
-
-.sparkText {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 100;
+  }
+  
+  .sparkText {
     color: white;
     height: 15px;
-}
-
-#videoExportProgressBarContainer {
+  }
+  
+  #videoExportProgressBarContainer {
     width: 95%;
     margin: auto;
     margin-top: 10px;
     margin-bottom: 15px;
-}
-
-#videoExportSettingsContainer {
-    
-}
-
-.quality-container {
+  }
+  
+  #videoExportSettingsContainer { }
+  
+  .quality-container {
     color: #FFF;
     display: flex;
     flex-direction: row;
-    float:left;
-}
-
-#qualitySettingTitle {
+    float: left;
+  }
+  
+  #qualitySettingTitle {
     padding-top: 5px;
     margin-right: 5px;
-}
-
-.dropbtn {
+  }
+  
+  .dropbtn {
     width: 60px;
     height: 16px;
     padding: 6px;
-
     background-color: #3498DB;
     color: white;
-    
     border: none;
     border-radius: 5px;
     cursor: pointer;
-
     text-align: center;
     font-size: 16px;
-}
-
-.dropbtn:hover, .dropbtn:focus {
+  }
+  .dropbtn:hover, .dropbtn:focus {
     background-color: #2980B9;
-}
-
-.dropdown {
+  }
+  
+  .dropdown {
     position: relative;
     display: inline-block;
-}
-
-.dropdown-content {
+  }
+  
+  .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -149,25 +128,24 @@ body, html {
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-}
-
-.dropdown-item {
+  }
+  
+  .dropdown-item {
     color: black;
     padding: 6px 8px;
     text-decoration: none;
-    display: block; 
+    display: block;
     z-index: 12;
-}
-
-.dropdown-item:hover {
+  }
+  .dropdown-item:hover {
     background-color: #FFF;
-}
-
-.show {
-    display:block;
-}
-
-.videoDownloadButton {
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .videoDownloadButton {
     border-radius: 5px;
     cursor: pointer;
     color: white;
@@ -177,16 +155,94 @@ body, html {
     padding: 6px;
     height: 20px;
     width: 160px;
-    float:right;
-    -webkit-transition: background-color 100ms linear;
-    -ms-transition: background-color 100ms linear;
+    float: right;
     transition: background-color 100ms linear;
-}
-
-.videoDownloadButton:hover {
+  }
+  
+  .videoDownloadButton:hover {
     background-color: #00D9A7;
-}
-
-.videoDownloadButton:active {
+  }
+  
+  .videoDownloadButton:active {
     background-color: #01C094;
-}
+  }
+  
+  /* =======================
+     Layout for Intro & Game Screens
+  =========================== */
+  #introScreen,
+  #gameContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease;
+  }
+  
+  #introScreen {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+  }
+  
+  #introContent {
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 90%;
+  }
+  
+  #introContent h1 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+  }
+  
+  #startGameBtn {
+    background-color: #3498DB;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #startGameBtn:hover {
+    background-color: #2980B9;
+  }
+  
+  #gameContainer {
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  #Stage {
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+  }
+  
+  #backToIntroBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    padding: 10px 20px;
+    background-color: #3498DB;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #backToIntroBtn:hover {
+    background-color: #2980B9;
+  }
+  
