@@ -1,107 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
-    <title>Kandinsky with Intro Window</title>
-
-    <!-- Inline CSS for new UI elements and basic layout -->
-    <style>
-      /* ============== Intro Window Styles ============== */
-      .intro-window {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.85); /* dark semi-transparent background */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000; /* On top of all other content */
-        transition: opacity 0.5s ease, visibility 0.5s ease;
-      }
-      /* When the 'hidden' class is added, fade the overlay out */
-      .intro-window.hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
-      .intro-content {
-        text-align: center;
-        color: #fff;
-        padding: 30px;
-        border: 2px solid #fff;
-        border-radius: 10px;
-        background: rgba(0, 0, 0, 0.5);
-      }
-      /* Responsive tweaks */
-      @media (max-width: 600px) {
-        .intro-content {
-          width: 90%;
-          padding: 20px;
-        }
-      }
-
-      /* ============== Main Player Styles ============== */
-      #playerContent {
-        position: relative;
-        width: 100%;
-        height: 100vh; /* full viewport height */
-        background: #222;  /* fallback background */
-      }
-      #kandinskyCanvas {
-        width: 100%;
-        height: 100%;
-        display: block;
-      }
-    </style>
-    
-    <!-- Here you might include external stylesheets too -->
-    <!-- <link href="assets/css/style.css" rel="stylesheet" type="text/css"> -->
-
-    <!-- External JavaScript libraries (Kandinsky code and dependencies) -->
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="assets/js/kandinsky.js"></script>
-	<script type="text/javascript" src="assets/js/howler.js"></script>
-	<script type="text/javascript" src="assets/js/main.js"></script>
-	<script type="text/javascript" src="assets/js/vconsole.min.js"></script>
-	<script type="text/javascript" src="assets/js/video-export/FileSaver.min.js"></script>
-	<script type="text/javascript" src="assets/js/video-export/polyfills.js"></script>
-	<script type="text/javascript" src="assets/js/video-export/videoExporter.js"></script>
-	<script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
-    <!-- Include any additional scripts you use (vconsole, video export, etc.) -->
-  </head>
-  <body>
-    <!-- ============== Intro Window Overlay ============== -->
-    <div id="introWindow" class="intro-window">
-      <div class="intro-content">
-        <h1>Welcome to Kandinsky</h1>
-        <p>A generative audio-visual experience</p>
-        <button id="startButton">Enter</button>
-      </div>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+  
+  <title>Kandinsky</title>
+  
+  <!-- CSS: Original stylesheet preserving all styles (plus your added intro window styles via CSS file) -->
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+  
+  <!-- Original JavaScript libraries and modules -->
+  <script type="text/javascript" src="assets/js/kandinsky.js"></script>
+  <script type="text/javascript" src="assets/js/howler.js"></script>
+  <script type="text/javascript" src="assets/js/main.js"></script>
+  <script type="text/javascript" src="assets/js/vconsole.min.js"></script>
+  <script type="text/javascript" src="assets/js/video-export/FileSaver.min.js"></script>
+  <script type="text/javascript" src="assets/js/video-export/polyfills.js"></script>
+  <script type="text/javascript" src="assets/js/video-export/videoExporter.js"></script>
+  <script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
+</head>
+<body>
+  <!-- Intro Window Overlay: New addition to welcome users -->
+  <div id="introWindow" class="intro-window">
+    <div class="intro-content">
+      <h1>Welcome to Kandinsky</h1>
+      <p>A generative audio-visual experience</p>
+      <button id="startButton">Enter</button>
     </div>
-
-    <!-- ============== Main Player Content ============== -->
-    <div id="playerContent">
-      <!-- Your main Kandinsky canvas (or other player elements) -->
-      <canvas id="kandinskyCanvas"></canvas>
-    </div>
-
-    <!-- Inline script for intro window behavior -->
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function () {
-        const startButton = document.getElementById("startButton");
-        startButton.addEventListener("click", function () {
-          // Add the 'hidden' class to fade out the intro overlay
-          document.getElementById("introWindow").classList.add("hidden");
-          
-          // Optionally: initialize or resume other functionality after user interaction
-          // For example, if your main.js has a start() function:
-          // if (typeof startPlayer === 'function') { startPlayer(); }
-        });
+  </div>
+  
+  <!-- Main Content: The Stage where Kandinsky renders its visuals -->
+  <div id="Stage">
+    <!-- Canvas element for drawing animations; kandinsky.js and main.js will target this -->
+    <canvas id="kandinskyCanvas"></canvas>
+  </div>
+  
+  <!-- Video Export GUI: Preserved from original script -->
+  <div id="videoExportGUI"></div>
+  
+  <!-- Inline Script: Handles the intro overlay fade-out on clicking "Enter" -->
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      var startButton = document.getElementById("startButton");
+      startButton.addEventListener("click", function () {
+        // Add 'hidden' class to fade out the intro overlay (styles for .hidden should be defined in your CSS)
+        document.getElementById("introWindow").classList.add("hidden");
+        // Optionally, if any additional initialization is required, you can trigger it here.
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
