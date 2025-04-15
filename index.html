@@ -40,14 +40,29 @@
   <!-- Video Export GUI: Preserved from original script -->
   <div id="videoExportGUI"></div>
   
-  <!-- Inline Script: Handles the intro overlay fade-out on clicking "Enter" -->
+  <!-- Inline Script: Handles the intro overlay fade-out on clicking "Enter" and kicks off the animation -->
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
       var startButton = document.getElementById("startButton");
       startButton.addEventListener("click", function () {
-        // Add 'hidden' class to fade out the intro overlay (styles for .hidden should be defined in your CSS)
+        // Fade out the intro overlay by adding the 'hidden' class.
         document.getElementById("introWindow").classList.add("hidden");
-        // Optionally, if any additional initialization is required, you can trigger it here.
+        console.log("Intro overlay hidden.");
+
+        // Delay execution to allow the fade-out transition to complete.
+        setTimeout(function(){
+          // Call the initialization routine for Kandinsky.
+          // Replace "startKandinsky" or "initKandinsky" with your actual initialization function name.
+          if (typeof startKandinsky === 'function') {
+            startKandinsky();
+            console.log("Kandinsky started via startKandinsky().");
+          } else if (typeof initKandinsky === 'function') {
+            initKandinsky();
+            console.log("Kandinsky started via initKandinsky().");
+          } else {
+            console.log("No initialization function found; assuming auto-initialization in main.js.");
+          }
+        }, 600); // Adjust delay to match your CSS transition time (600 ms used here as an example)
       });
     });
   </script>
