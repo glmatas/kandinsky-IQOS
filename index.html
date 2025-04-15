@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
   <title>Kandinsky</title>
   
-  <!-- Link to external CSS files if any -->
+  <!-- Your external CSS -->
   <link href="assets/css/style.css" rel="stylesheet" type="text/css">
   
   <style>
@@ -20,24 +20,29 @@
       overflow: hidden;
     }
     
-    /* Intro overlay styles */
-    #introScreen {
-      position: fixed;
+    /* Ensure both containers cover the full screen */
+    #introScreen, #gameContainer {
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+    }
+    
+    /* Intro screen overlay */
+    #introScreen {
       background: linear-gradient(135deg, #667eea, #764ba2);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 200; /* Ensures the intro is on top */
+      text-align: center;
       opacity: 1;
       transition: opacity 0.5s ease-out;
+      z-index: 2;
+      pointer-events: auto;
     }
 
     #introContent {
-      text-align: center;
       color: white;
       font-family: Arial, sans-serif;
       padding: 20px;
@@ -49,7 +54,6 @@
       font-size: 2.5em;
     }
 
-    /* Modern start button styling */
     #startGameBtn {
       background-color: #3498DB;
       border: none;
@@ -64,19 +68,23 @@
     #startGameBtn:hover {
       background-color: #2980B9;
     }
-
-    /* Container for the actual game elements */
+    
+    /* Game container starts visible (but fully transparent) */
     #gameContainer {
-      display: none; /* Hidden until the intro is dismissed */
-      width: 100%;
-      height: 100%;
-      position: relative;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 1; /* Behind the intro until fade completes */
     }
     
-    /* Include other styles (e.g., for spinner, export GUI, etc.) if needed */
-    /* ... existing CSS from your project ... */
+    /* Example placeholder for game content – ensure you have your canvas or game markup here */
+    #Stage {
+      width: 100%;
+      height: 100%;
+      background-color: #222; /* dark background to indicate the game area */
+    }
     
-    /* Example for the video export GUI div */
+    /* Existing styles you had (for videoExportGUI etc.) can remain here */
     #videoExportGUI {
       background-color: gray;    
       padding: 20px;
@@ -86,7 +94,6 @@
       width: 500px;
       height: 106px;
       position: absolute;
-      z-index: 10;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
       transform: translate(-50%, -50%);
       display: none;
@@ -106,13 +113,13 @@
   
   <!-- Game Container -->
   <div id="gameContainer">
-    <!-- Your game’s canvas or other elements go here -->
-    <!-- Example: <canvas id="Stage"></canvas> -->
-    <!-- Your existing GUI elements like #videoExportGUI can also be inside here -->
+    <!-- Your game’s canvas or other game elements -->
+    <canvas id="Stage"></canvas>
+    <!-- Other game-related elements like the video export GUI -->
     <div id="videoExportGUI"></div>
   </div>
   
-  <!-- Include external scripts -->
+  <!-- Your external scripts -->
   <script type="text/javascript" src="assets/js/kandinsky.js"></script>
   <script type="text/javascript" src="assets/js/howler.js"></script>
   <script type="text/javascript" src="assets/js/main.js"></script>
@@ -123,23 +130,24 @@
   <script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
   
   <script>
-    // Attach click event listener to the start button
+    // Start the transition when the button is clicked.
     document.getElementById("startGameBtn").addEventListener("click", function() {
-      // Fade out the intro screen
-      const introScreen = document.getElementById("introScreen");
+      var introScreen = document.getElementById("introScreen");
+      var gameContainer = document.getElementById("gameContainer");
+      
+      // Fade in the game container and fade out the intro screen
+      gameContainer.style.opacity = "1";
       introScreen.style.opacity = "0";
       
-      // After the fade transition, hide the intro and reveal the game container
+      // After the fade transition completes, you can optionally disable pointer events on the intro
       setTimeout(function() {
         introScreen.style.display = "none";
-        document.getElementById("gameContainer").style.display = "block";
-        
-        // Initialize your game here if needed.
-        // For example, if you have an initializeGame function in main.js:
+        // Here you may also initialize your game if needed.
+        // For example, if you have a function called initializeGame():
         // if (typeof initializeGame === "function") {
         //   initializeGame();
         // }
-      }, 500); // The delay matches the CSS transition duration
+      }, 500); // This timeout should match the CSS transition duration
     });
   </script>
 </body>
