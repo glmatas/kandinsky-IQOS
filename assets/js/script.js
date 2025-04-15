@@ -1,17 +1,18 @@
 var inactivityTimer; // Holds the inactivity timeout
 
-// Start/resume the game: hide the intro overlay and show the game.
+// Start/resume the game: hide the intro overlay so that the canvas can be interacted with.
 function startGame() {
   var introScreen = document.getElementById("introScreen");
   var backButton = document.getElementById("backToIntroBtn");
 
-  // Fade out the intro overlay and disable its interactions.
+  // Fade out the intro overlay.
   introScreen.style.opacity = "0";
   introScreen.style.pointerEvents = "none";
   
-  // After the fade, remove the overlay from display and show the Return Home button.
+  // After 500ms (allowing the transition to finish), hide the overlay completely.
   setTimeout(function() {
     introScreen.style.display = "none";
+    // Show the Return Home button.
     backButton.style.display = "block";
     startInactivityTimer();
   }, 500);
@@ -25,7 +26,7 @@ function goToIntro() {
   // Clear the inactivity timer.
   clearTimeout(inactivityTimer);
   
-  // Show the intro overlay.
+  // Display and fade in the intro overlay.
   introScreen.style.display = "flex";
   introScreen.style.pointerEvents = "auto";
   setTimeout(function() {
@@ -42,11 +43,10 @@ function startInactivityTimer() {
   inactivityTimer = setTimeout(goToIntro, 60000); // 60 seconds
 }
 
-// Reset the inactivity timer upon any user interaction.
+// Reset the inactivity timer on any user interaction.
 function resetInactivityTimer() {
-  var introScreen = document.getElementById("introScreen");
-  // Only reset if the intro overlay is hidden (i.e. the game is active).
-  if (introScreen.style.display === "none") {
+  // Only reset the timer if the intro overlay is currently hidden.
+  if (document.getElementById("introScreen").style.display === "none") {
     startInactivityTimer();
   }
 }

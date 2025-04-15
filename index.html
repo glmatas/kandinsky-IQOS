@@ -10,7 +10,7 @@
   <!-- Link to external CSS -->
   <link href="assets/css/style.css" rel="stylesheet" type="text/css">
   
-  <!-- External JavaScript files for the game -->
+  <!-- Your existing game-related scripts -->
   <script type="text/javascript" src="assets/js/kandinsky.js"></script>
   <script type="text/javascript" src="assets/js/howler.js"></script>
   <script type="text/javascript" src="assets/js/main.js"></script>
@@ -21,10 +21,10 @@
   <script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
 </head>
 <body>
-  <!-- The game canvas -->
+  <!-- The game canvas (Stage) is directly in the body -->
   <canvas id="Stage"></canvas>
   
-  <!-- Intro Screen Overlay (sits on top of the canvas) -->
+  <!-- Intro overlay that covers the canvas -->
   <div id="introScreen">
     <div id="introContent">
       <h1>Welcome to Kandinsky</h1>
@@ -33,10 +33,10 @@
     </div>
   </div>
   
-  <!-- Return Home button (initially hidden) -->
+  <!-- Return Home button (for going back to the intro) -->
   <button id="backToIntroBtn">Return Home</button>
   
-  <!-- Video export GUI element (from your original markup) -->
+  <!-- Video export GUI (from original markup) -->
   <div id="videoExportGUI"></div>
   
   <!-- Link to our custom script -->
