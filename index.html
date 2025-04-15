@@ -82,4 +82,65 @@
       padding: 20px;
       border-radius: 3px;
       left: 50%;
-      top:
+      top: 50%;
+      width: 500px;
+      height: 106px;
+      position: absolute;
+      z-index: 10;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Intro Screen Overlay -->
+  <div id="introScreen">
+    <div id="introContent">
+      <h1>Welcome to Kandinsky</h1>
+      <p>Prepare to start your creative journey.</p>
+      <button id="startGameBtn">Start Game</button>
+    </div>
+  </div>
+  
+  <!-- Game Container -->
+  <div id="gameContainer">
+    <!-- Your game’s canvas or other elements go here -->
+    <!-- Example: <canvas id="Stage"></canvas> -->
+    <!-- Your existing GUI elements like #videoExportGUI can also be inside here -->
+    <div id="videoExportGUI"></div>
+  </div>
+  
+  <!-- Include external scripts -->
+  <script type="text/javascript" src="assets/js/kandinsky.js"></script>
+  <script type="text/javascript" src="assets/js/howler.js"></script>
+  <script type="text/javascript" src="assets/js/main.js"></script>
+  <script type="text/javascript" src="assets/js/vconsole.min.js"></script>
+  <script type="text/javascript" src="assets/js/video-export/FileSaver.min.js"></script>
+  <script type="text/javascript" src="assets/js/video-export/polyfills.js"></script>
+  <script type="text/javascript" src="assets/js/video-export/videoExporter.js"></script>
+  <script type="text/javascript" src="assets/js/CanvasToVideo.js"></script>
+  
+  <script>
+    // Attach click event listener to the start button
+    document.getElementById("startGameBtn").addEventListener("click", function() {
+      // Fade out the intro screen
+      const introScreen = document.getElementById("introScreen");
+      introScreen.style.opacity = "0";
+      
+      // After the fade transition, hide the intro and reveal the game container
+      setTimeout(function() {
+        introScreen.style.display = "none";
+        document.getElementById("gameContainer").style.display = "block";
+        
+        // Initialize your game here if needed.
+        // For example, if you have an initializeGame function in main.js:
+        // if (typeof initializeGame === "function") {
+        //   initializeGame();
+        // }
+      }, 500); // The delay matches the CSS transition duration
+    });
+  </script>
+</body>
+</html>
